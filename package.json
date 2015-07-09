@@ -1,0 +1,15 @@
+{
+  "name": "aplicacion",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node app"
+  },
+   "dependencies": {
+    "express": "3.4.7",
+    "mongoose": "*"
+  },
+    "engines":{
+        "node": "0.10.x",
+        "npm": "2.12.1"
+   }
+}

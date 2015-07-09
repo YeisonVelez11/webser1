@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html ng-app="aplicacion">
+  <head>
+    <META HTTP-EQUIV="Content-Type" content="text/html; charset=utf-8"/>   
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BIOS</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link href="css/main.css" rel="stylesheet">
+    <title>Georreferenciación Municipios de Caldas</title>
+    <link rel="stylesheet" type="text/css" href="css/example.css"/>
+	
+
+	 
+
+	
+	<script src="javascripts/jquery-1.8.3.js"></script>
+	<script src="javascripts/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="javascripts/jquery-ui-1.9.2.custom.js"></script>
+	<link href="css/black-tie/jquery-ui-1.9.2.custom.min.css" rel="stylesheet">
+    
+      
+    	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/plug-ins/1.10.7/integration/jqueryui/dataTables.jqueryui.css">
+
+		<script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" language="javascript" src="//cdn.datatables.net/plug-ins/1.10.7/integration/jqueryui/dataTables.jqueryui.js"></script>
+      
+      
+	
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&language=es"></script>
+      	<script type="text/javascript" src="javascripts/angular.min.js"></script>
+    <script type="text/javascript" src="javascripts/jquery.tablesorter.min.js"></script>
+      <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"></script>
+    <script type="text/javascript" src="javascripts/script_dengue.js"></script>
+      
+	<!--
+	<!--// dibujar poligonos http://www.birdtheme.org/useful/v3tool.html
+http://www.gadm.org/download
+-->
+
+  </head>
+  <body class="homepage"> 
+   <div id="resultadosMun" ng-controller="Municipios" ng-init="cargarMunicipio()">
+		
+		
+        <header id="header">
+            <nav id='navba' class="navbar navbar-fixed-top" role="banner">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="index_dengue.html">DEMO DENGUE (WEBSERVICE) </a>
+                    </div>
+
+                    <div class="collapse navbar-collapse navbar-right">
+                        <ul class="nav navbar-nav">
+                         <!--   <li style='display: none;'class='ocultar'><label for='rios' style='color: white;'>Mostrar Rios <input type='checkbox'   id='rios' ></label></li>
+                            <li class='ocultar' style='display: none;'><label for='municipios' style='color: white;'>Mostrar municipio <input type='checkbox' checked  id='municipios' ></label></li >-->
+                                    <!--<li class="active"><a href="index_dengue.html">Dengue</a></li> -->
+                                                        <li class='ocultar' style='display: none;'><a href="#" id='Historico'>Histórico</a></li> 
+ 
+                                                        <li class='ocultar' style='display: none;'><a href="#" id='mostrarTabla'>Ver Datos</a></li> 
+ 
+                          <!--  <li ><a href="#" id='cargar'>Cargar</a></li> 
+                            <li ><a href="#">Chikungunya</a></li> -->
+                            <li><a href="http://bios.co">BIOS</a></li>               
+
+                            <!--<li><a href="index.html">Inicio</a></li>
+                            <li><a href="about-us.html">Acerca de Nosotros</a></li>
+                            <li><a href="blog.html">Blog</a></li> -->
+                        </ul>
+                    </div>
+                </div><!--/.container-->
+            </nav><!--/nav-->
+
+        </header><!--/header-->
+        <!--	
+        <div class="map">
+            <iframe src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Kuningan,+Jakarta+Capital+Region,+Indonesia&amp;aq=3&amp;oq=kuningan+&amp;sll=37.0625,-95.677068&amp;sspn=37.410045,86.572266&amp;ie=UTF8&amp;hq=&amp;hnear=Kuningan&amp;t=m&amp;z=14&amp;ll=-6.238824,106.830177&amp;output=embed">
+            </iframe>
+        </div>
+        -->
+      
+        <!--<section id="contact-page">
+            <div class="container">-->
+
+
+       
+       <div id="contenedorSlider" title='Seleccione Año:' style='width: 400px; position:absolute;  border-radius: 15px 15px 15px 15px;
+-moz-border-radius: 15px 15px 15px 15px;
+-webkit-border-radius: 15px 15px 15px 15px;
+border: 1px double #000000;  left: 50%;
+    top: 25%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);'>
+           
+           <center> Seleccione año para filtrar datos:<br><br></center>
+           <!--style='border: 1px solid black;  border-radius: 12px;  position: fixed; bottom: 4px; left: 4px; width:300px; height: 70px; background: rgb(255, 255, 255);
+       <label for="amount" id='mostrarAnioo' style='bottom: 16px;' >Seleccione Año: </label>-->
+           <center><input type="text" id="amount"  readonly style="border:0;  background-color:transparent; "></center>
+           <center>   <div id="slider-range-max" ></div></center> 
+           <br><br>
+               <center>       <a href="" id="link" download="municipio.json">Descargar el contenido</a>
+
+           </center>
+
+       </div>
+      <textarea id='mostrar_query' title='Mostrar Query:' cols=150 rows=22 readonly style="border:0; position: absolute; top:38%; left:170px;">  </textarea>
+
+
+    
+       
+       
+		<!--  
+        <div id='mostrar_query' title='Mostrar Query:'>
+          
+       </div>  
+	-->
+  
+    </div>
+		
+	<br>
+       <br>
+       <br>        
+
+
+		
+  </body>
+</html>
